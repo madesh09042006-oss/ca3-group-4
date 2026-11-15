@@ -1,5 +1,6 @@
 ﻿import io
 from datetime import datetime
+from zoneinfo import ZoneInfo
 import speech_recognition as sr
 import streamlit as st
 from gtts import gTTS
@@ -67,11 +68,11 @@ if user_command:
         reply = "Sorry, I did not understand that command. Try asking for the time, date, or a joke."
         detected_label = "Unknown / Low Confidence"
     elif intent == "time":
-        now = datetime.now().strftime("%I:%M %p")
+        now = datetime.now(ZoneInfo("Asia/Kolkata")).strftime("%I:%M %p")
         reply = f"The current time is {now}."
         detected_label = "Get Time"
     elif intent == "date":
-        today = datetime.now().strftime("%B %d, %Y")
+        today = datetime.now(ZoneInfo("Asia/Kolkata")).strftime("%B %d, %Y")
         reply = f"Today's date is {today}."
         detected_label = "Get Date"
     elif intent == "greeting":
